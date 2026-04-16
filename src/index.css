@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Fallback styles for navbar if Tailwind not fully loaded */
+nav {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 50;
+  transition: all 0.5s;
+}
+
+nav.scrolled {
+  background: rgba(220, 38, 38, 0.8);
+  backdrop-filter: blur(8px);
+}
+
+.logo {
+  color: white !important;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.nav-links a {
+  color: white !important;
+}
+
+.social-icons svg {
+  color: #dc2626 !important;
+  font-size: 1.125rem;
+}
