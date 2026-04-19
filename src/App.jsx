@@ -5,6 +5,7 @@ import Hero from "./components/Hero";
 import Service from "./components/Service";
 import Team from "./components/Team";
 import Footer from "./components/Footer";
+import globe from "./assets/globe2.png";
 
 const Home = () => (
   <>
@@ -18,22 +19,31 @@ const Home = () => (
 function App() {
   return (
     <Router>
-      {/* Root Container: Full Black Background */}
-      <div className="bg-black min-h-screen w-full relative">
+      <div className="bg-black min-h-screen w-full relative overflow-x-visible">
         
-        {/* 1. Navbar: Iska z-index 100 hai taaki ye hamesha top par rahe */}
-        <Navbar />
+        {/* BACKGROUND LAYER */}
+        <div 
+          className="fixed inset-0 z-0 opacity-40 pointer-events-none" 
+          style={{ 
+            backgroundImage: `url(${globe})`, 
+            backgroundSize: '100%',        // Size yahan se barhaein (e.g., 150%)
+            backgroundPosition: 'center', // Alignment left-top
+            backgroundRepeat: 'no-repeat',
+          }}
+        />
 
-        {/* 2. Content Area: Routes ke andar Hero Section load hoga */}
-        <main className="relative w-full">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={ <div className="pt-40 text-white text-center">About Page</div> } />
-            <Route path="/services" element={ <div className="pt-40 text-white text-center">Services Page</div> } />
-            <Route path="/contact" element={ <div className="pt-40 text-white text-center">Contact Page</div> } />
-          </Routes>
-        </main>
-
+        {/* CONTENT LAYER */}
+        <div className="relative z-10 w-full">
+          <Navbar />
+          <main className="w-full">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={ <div className="pt-40 text-white text-center">About Page</div> } />
+              <Route path="/services" element={ <div className="pt-40 text-white text-center">Services Page</div> } />
+              <Route path="/contact" element={ <div className="pt-40 text-white text-center">Contact Page</div> } />
+            </Routes>
+          </main>
+        </div>
       </div>
     </Router>
   );

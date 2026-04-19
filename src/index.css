@@ -6,7 +6,6 @@ html {
 
 /* Fallback styles for navbar if Tailwind not fully loaded */
 nav {
-  position: fixed !important;
   top: 0;
   left: 0;
   width: 100%;

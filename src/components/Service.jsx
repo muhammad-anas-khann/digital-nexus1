@@ -2,7 +2,7 @@ import React from 'react';
 
 const Service = () => {
   const ServiceCard = ({ id, title, desc, tags, popular, image }) => (
-    <div className="group relative flex flex-col w-full h-[400px] rounded-[30px] bg-[#111111] border border-white/5 overflow-hidden transition-all duration-700 hover:border-[#e63c3c]/50 hover:shadow-[0_0_40px_rgba(230,60,60,0.2)]">
+    <div className="group relative flex flex-col w-full h-[400px] rounded-[30px] bg-[#795050] border border-white/5 overflow-hidden transition-all duration-700 hover:border-[#e63c3c]/50 hover:shadow-[0_0_40px_rgba(230,60,60,0.2)]">
       {/* Top Image Section */}
       <div className="relative w-full h-40 overflow-hidden">
         <img src={image || "https://images.unsplash.com/photo-1614850523296-d8c1af93d400?q=80&w=500"} 
@@ -36,7 +36,7 @@ const Service = () => {
   );
 
   return (
-    <section id="services" className="bg-black py-20 px-6 overflow-hidden">
+    <section id="services" className=" py-20 px-6 overflow-hidden">
       <div className="max-w-[95%] mx-auto relative">
         
         {/* 1. Our Services Heading (Red Line Removed) */}

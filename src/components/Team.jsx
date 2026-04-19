@@ -18,8 +18,8 @@ const Team = () => {
   ];
 
   const TestimonialCard = ({ t }) => (
-    <div className="flex-shrink-0 w-[640px] h-[420px] group">
-      <div className="relative w-full h-full p-8 rounded-[45px] border border-white/5 bg-[#080808] flex flex-col justify-between transition-all duration-500 ease-out 
+    <div className="flex-shrink-0 w-[540px] h-[320px] group ]">
+      <div className="relative w-full h-full p-8 rounded-[45px] border border-white/59 bg-transparent flex flex-col justify-between transition-all duration-500 ease-out 
                       group-hover:-translate-y-4 group-hover:border-[#e63c3c]/50 
                       group-hover:shadow-[0_20px_50px_rgba(230,60,60,0.2)]">
         
@@ -28,7 +28,6 @@ const Team = () => {
 
         <div className="relative z-10 flex flex-col items-center text-center space-y-5">
           <div className="space-y-2">
-            <span className="text-[#e63c3c] text-6xl font-serif leading-none italic block opacity-50">"</span>
             <p className="text-gray-400 text-lg font-medium italic leading-snug px-2 group-hover:text-white transition-colors duration-500">{t.text}</p>
           </div>
         </div>
@@ -49,7 +48,7 @@ const Team = () => {
   );
 
   return (
-    <section id="team" className="bg-black py-24 px-6 relative overflow-hidden">
+    <section id="team" className=" py-24 px-6 relative overflow-hidden">
       <div className="max-w-[95%] mx-auto relative z-10">
         
         {/* Header Section */}
