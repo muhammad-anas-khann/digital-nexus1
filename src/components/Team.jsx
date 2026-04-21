@@ -1,13 +1,30 @@
 import React from 'react';
 import Reveal from "./Reveal";
+import './Team.css';
 import kashan from "../assets/kashan.jpeg";
 import speed from "../assets/speed.png";
 import { FaLinkedinIn, FaInstagram, FaFacebookF } from "react-icons/fa6";
 
 const Team = () => {
   const members = [
-    { name: "Kashan", role: "Co-Founder & CEO", img: kashan, bio: "Leading the strategic vision and global expansion of Digital Nexus." },
-    { name: "Abdullah", role: "Co-Founder & CTO", img: speed, bio: "Masterminding the technological backbone and engineering excellence." }
+    { 
+      name: "Kashan", 
+      role: "Co-Founder & CEO", 
+      img: kashan, 
+      bio: "Leading the strategic vision and global expansion of Digital Nexus.",
+      linkedin: "https://linkedin.com/in/kashan",
+      instagram: "https://instagram.com/kashan",
+      facebook: "https://facebook.com/kashan"
+    },
+    { 
+      name: "Abdullah", 
+      role: "Co-Founder & CTO", 
+      img: speed, 
+      bio: "Masterminding the technological backbone and engineering excellence.",
+      linkedin: "https://linkedin.com/in/abdullah",
+      instagram: "https://instagram.com/abdullah",
+      facebook: "https://facebook.com/abdullah"
+    }
   ];
 
   const testimonials = [
@@ -24,6 +41,7 @@ const Team = () => {
       <div className="relative w-full md:w-2/5 h-[250px] sm:h-[350px] overflow-hidden">
         <img
           src={m.img}
+          alt={`${m.name}, ${m.role}`}
           className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700"
         />
 
@@ -31,22 +49,27 @@ const Team = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
         {/* animated name overlay */}
-        <div className="absolute bottom-4 left-4">
-        
+        <div className="absolute bottom-4 left-4 group-hover:opacity-100 opacity-0 transition-all duration-500">
+          <h4 className="text-white font-black italic text-lg uppercase drop-shadow-lg">
+            {m.name}
+          </h4>
+          <p className="text-[#e63c3c] text-xs font-bold uppercase tracking-wider mt-1">
+            {m.role}
+          </p>
         </div>
 
         {/* SOCIAL ICONS */}
         <div className="absolute top-4 right-4 flex flex-col gap-3 opacity-0 translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500">
 
-          <a href="#" className="text-white/70 hover:text-blue-500 text-sm">
+          <a href={m.linkedin} target="_blank" rel="noopener noreferrer" aria-label={`${m.name}'s LinkedIn`} className="text-white/70 hover:text-blue-500 text-sm transition-colors">
             <FaLinkedinIn />
           </a>
 
-          <a href="#" className="text-white/70 hover:text-pink-500 text-sm">
+          <a href={m.instagram} target="_blank" rel="noopener noreferrer" aria-label={`${m.name}'s Instagram`} className="text-white/70 hover:text-pink-500 text-sm transition-colors">
             <FaInstagram />
           </a>
 
-          <a href="#" className="text-white/70 hover:text-blue-600 text-sm">
+          <a href={m.facebook} target="_blank" rel="noopener noreferrer" aria-label={`${m.name}'s Facebook`} className="text-white/70 hover:text-blue-600 text-sm transition-colors">
             <FaFacebookF />
           </a>
 
@@ -123,13 +146,13 @@ const Team = () => {
 
         <div className="relative space-y-10 overflow-visible">
 
-          <div className="flex w-[200%] gap-6 sm:gap-10 animate-scroll-left">
+          <div className="flex w-[200%] gap-6 sm:gap-10 animate-scroll-left hover:pause-scroll">
             {[...testimonials, ...testimonials].map((t, i) => (
               <TestimonialCard key={i} t={t} />
             ))}
           </div>
 
-          <div className="flex w-[200%] gap-6 sm:gap-10 animate-scroll-right">
+          <div className="flex w-[200%] gap-6 sm:gap-10 animate-scroll-right hover:pause-scroll">
             {[...testimonials, ...testimonials].reverse().map((t, i) => (
               <TestimonialCard key={i} t={t} />
             ))}
@@ -139,28 +162,54 @@ const Team = () => {
 
       </div>
 
-      <style>{`
-        @keyframes scroll-left {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
+      {/* Contact Form UI */}
+      <div className="group relative max-w-6xl mx-auto min-h-[500px] rounded-[50px] bg-[#050505] border border-white/5 overflow-hidden transition-all duration-700 hover:scale-[1.01] hover:border-[#e63c3c]/30 hover:shadow-[0_0_80px_rgba(230,60,60,0.15)] mt-20">
+        <div className="absolute top-0 -left-20 w-80 h-80 bg-[#e63c3c]/10 rounded-full blur-[120px] group-hover:bg-[#e63c3c]/25 transition-all duration-700" />
+        <div className="absolute bottom-0 -right-20 w-96 h-96 bg-[#8b0000]/10 rounded-full blur-[150px] group-hover:bg-[#8b0000]/20 transition-all duration-700" />
 
-        @keyframes scroll-right {
-          0% { transform: translateX(-50%); }
-          100% { transform: translateX(0); }
-        }
+        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 h-full">
+          <div className="p-10 lg:p-14 flex flex-col justify-center border-b lg:border-b-0 lg:border-r border-white/5">
+            <div className="space-y-6">
+              <span className="inline-block text-[10px] font-black uppercase tracking-[6px] text-[#e63c3c] border border-[#e63c3c]/30 px-6 py-2 rounded-full animate-pulse">Direct Channel</span>
+              <h3 className="text-4xl md:text-6xl font-black text-white italic uppercase leading-[0.9] tracking-tighter transition-transform group-hover:translate-x-2">
+                Let's <br /> <span className="stroke-text">Discuss</span> <br /> 
+                <span className="text-[#e63c3c]">Success.</span>
+              </h3>
+              <p className="text-zinc-500 text-xs max-w-sm font-medium leading-relaxed italic opacity-80 group-hover:opacity-100 transition-opacity">
+                Drop your details and project vision. Our elite strategy team will reach out within 12 hours.
+              </p>
+            </div>
+          </div>
 
-        .animate-scroll-left {
-          animation: scroll-left 35s linear infinite;
-        }
-
-        .animate-scroll-right {
-          animation: scroll-right 35s linear infinite;
-        }
-      `}</style>
-
+          <div id="contact" className="p-8 lg:p-14 bg-gradient-to-br from-white/[0.01] to-transparent">
+            <form netlify method="POST" className="space-y-6">
+              <input type="hidden" name="form-name" value="contact" />
+              <div className="relative group/field border-b-2 border-white/10">
+                <input type="text" name="name" required placeholder=" " className="peer w-full bg-transparent py-3 text-white text-xs font-bold uppercase tracking-widest outline-none border-none focus:ring-0" />
+                <label className="absolute left-0 top-3 text-white/20 text-[10px] font-black uppercase tracking-[3px] transition-all peer-focus:-top-4 peer-focus:text-[#e63c3c] peer-[:not(:placeholder-shown)]:-top-4">Full Name</label>
+                <div className="absolute -bottom-[2px] left-0 w-0 h-[2px] bg-[#e63c3c] transition-all duration-500 group-hover/field:w-full peer-focus:w-full shadow-[0_0_10px_#e63c3c]" />
+              </div>
+              <div className="relative group/field border-b-2 border-white/10">
+                <input type="email" name="email" required placeholder=" " className="peer w-full bg-transparent py-3 text-white text-xs font-bold uppercase tracking-widest outline-none border-none focus:ring-0" />
+                <label className="absolute left-0 top-3 text-white/20 text-[10px] font-black uppercase tracking-[3px] transition-all peer-focus:-top-4 peer-focus:text-[#e63c3c] peer-[:not(:placeholder-shown)]:-top-4">Email Address</label>
+                <div className="absolute -bottom-[2px] left-0 w-0 h-[2px] bg-[#e63c3c] transition-all duration-500 group-hover/field:w-full peer-focus:w-full shadow-[0_0_10px_#e63c3c]" />
+              </div>
+              <div className="relative group/field border-b-2 border-white/10">
+                <textarea name="message" required rows="3" placeholder=" " className="peer w-full bg-transparent py-3 text-white text-xs font-bold uppercase tracking-widest outline-none border-none focus:ring-0 resize-none" />
+                <label className="absolute left-0 top-3 text-white/20 text-[10px] font-black uppercase tracking-[3px] transition-all peer-focus:-top-4 peer-focus:text-[#e63c3c] peer-[:not(:placeholder-shown)]:-top-4">Project Brief</label>
+                <div className="absolute -bottom-[2px] left-0 w-0 h-[2px] bg-[#e63c3c] transition-all duration-500 group-hover/field:w-full peer-focus:w-full shadow-[0_0_10px_#e63c3c]" />
+              </div>
+              <button type="submit" className="relative w-full overflow-hidden group/btn bg-white py-5 rounded-2xl transition-all duration-500 active:scale-95 shadow-[0_10px_30px_rgba(255,255,255,0.05)] hover:shadow-[0_15px_40px_rgba(230,60,60,0.2)]">
+                <div className="absolute inset-0 w-0 bg-[#e63c3c] transition-all duration-500 group-hover/btn:w-full" />
+                <span className="relative z-10 text-black text-[11px] font-black uppercase tracking-[5px] group-hover/btn:text-white transition-colors">Initialize Project →</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
     </section>
   );
 };
 
 export default Team;
+
