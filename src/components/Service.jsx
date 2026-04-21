@@ -3,169 +3,193 @@ import Reveal from "./Reveal";
 
 const Service = () => {
 
-  const ServiceCard = ({ id, title, desc, tags, popular, image }) => (
-    <div className="group relative flex flex-col w-full h-[400px] rounded-[30px] bg-[#795050] border border-white/5 overflow-hidden transition-all duration-700 hover:border-[#e63c3c]/50 hover:shadow-[0_0_40px_rgba(230,60,60,0.2)]">
+  const ServiceCard = ({ id, title, desc, tags, popular, image, iconColor }) => (
+    <div className="group relative flex flex-col w-full h-[450px] rounded-[40px] bg-[#0f0f0f] border border-white/10 overflow-hidden transition-all duration-500 hover:border-[#e63c3c]/50 hover:shadow-[0_0_50px_rgba(230,60,60,0.15)]">
       
-      {/* Image */}
-      <div className="relative w-full h-40 overflow-hidden">
+      {/* Background Glow Effect */}
+      <div className="absolute -top-20 -right-20 w-40 h-40 bg-[#e63c3c]/10 blur-[80px] group-hover:bg-[#e63c3c]/20 transition-all duration-700" />
+
+      {/* Image Section with Overlay */}
+      <div className="relative w-full h-44 overflow-hidden">
         <img 
-          src={image || "https://images.unsplash.com/photo-1614850523296-d8c1af93d400?q=80&w=500"} 
-          className="w-full h-full object-cover opacity-40 group-hover:opacity-100 group-hover:scale-110 transition-all duration-1000" 
+          src={image || "https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=500"} 
+          className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000" 
           alt={title} 
         />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0f0f0f] via-[#0f0f0f]/40 to-transparent" />
+        
         {popular && (
-          <span className="absolute top-4 right-4 px-3 py-1 bg-[#00f2ea]/20 text-[#00f2ea] text-[9px] font-bold uppercase rounded-full border border-[#00f2ea]/30 z-20">
-            Popular
-          </span>
+          <div className="absolute top-5 left-5 px-4 py-1.5 bg-[#e63c3c] text-white text-[10px] font-bold uppercase tracking-widest rounded-full shadow-[0_0_15px_rgba(230,60,60,0.5)] z-20">
+            Most Wanted
+          </div>
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#111111] via-transparent to-transparent" />
       </div>
 
       {/* Content */}
-      <div className="p-7 flex flex-col flex-grow relative">
-        <span className="absolute -top-4 right-8 text-7xl font-black text-white/5 group-hover:text-[#e63c3c]/10 transition-all duration-700 italic">
+      <div className="p-8 flex flex-col flex-grow relative">
+        {/* Floating ID */}
+        <span className="absolute top-2 right-8 text-6xl font-outline-2 font-black text-white/5 group-hover:text-white/10 transition-all duration-700 select-none">
           {id}
         </span>
 
-        <div className="w-10 h-10 rounded-lg bg-[#e63c3c]/10 flex items-center justify-center mb-4 border border-[#e63c3c]/20 group-hover:rotate-[360deg] transition-transform duration-1000">
-          <div className="w-2.5 h-2.5 bg-[#e63c3c] rounded-sm shadow-[0_0_15px_#e63c3c]" />
+        {/* Icon / Bullet */}
+        <div className={`w-12 h-12 rounded-2xl flex items-center justify-center mb-6 border border-white/10 group-hover:scale-110 group-hover:border-[#e63c3c]/40 transition-all duration-500 bg-gradient-to-br from-white/5 to-transparent`}>
+           <div className={`w-3 h-3 rounded-full bg-[#e63c3c] shadow-[0_0_15px_#e63c3c] animate-pulse`} />
         </div>
 
-        <h3 className="text-xl font-bold text-white mb-2 italic group-hover:text-[#e63c3c] transition-colors uppercase">
+        <h3 className="text-2xl font-bold text-white mb-3 group-hover:translate-x-2 transition-transform duration-500">
           {title}
         </h3>
 
-        <p className="text-gray-400 text-[11px] leading-relaxed mb-4 line-clamp-2">
+        <p className="text-gray-400 text-xs leading-relaxed mb-6">
           {desc}
         </p>
 
+        {/* Dynamic Tags */}
         <div className="flex flex-wrap gap-2 mt-auto mb-6">
           {tags.map((tag, i) => (
-            <span key={i} className="text-[9px] font-bold text-zinc-500 px-3 py-1 bg-white/5 rounded-md border border-white/5 uppercase">
-              ✓ {tag}
+            <span key={i} className="text-[9px] font-medium text-white/60 px-3 py-1.5 bg-white/5 rounded-full border border-white/5 group-hover:border-[#e63c3c]/20 transition-all">
+              {tag}
             </span>
           ))}
         </div>
 
-        <div className="flex items-center gap-2 text-white text-[10px] font-black uppercase tracking-widest group/btn">
-          Discover More 
-          <span className="text-[#e63c3c] group-hover/btn:translate-x-2 transition-transform">
-            →
-          </span>
+        {/* Action Link */}
+        <div className="flex items-center gap-3 text-[#e63c3c] text-[11px] font-bold uppercase tracking-widest cursor-pointer group/link">
+          Get This Design
+          <div className="w-8 h-[1px] bg-[#e63c3c]/30 group-hover/link:w-12 transition-all duration-500"></div>
         </div>
       </div>
     </div>
   );
 
   return (
-    <section id="services" className="py-20 px-6 overflow-hidden">
-      <div className="max-w-[95%] mx-auto relative">
+    <section id="services" className="py-24 bg-[#050505] relative overflow-hidden">
+      
+      {/* Decorative Background Elements */}
+      <div className="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none">
+        <div className="absolute top-1/4 -left-20 w-96 h-96 bg-[#e63c3c] rounded-full blur-[150px]" />
+        <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-blue-600 rounded-full blur-[150px] opacity-30" />
+      </div>
 
-        {/* Heading */}
-        <Reveal>
-          <div className="mb-16 text-left group">
-            <h2 className="text-white text-5xl md:text-6xl font-black uppercase italic tracking-tighter transition-all duration-700 hover:tracking-normal cursor-default">
-              Our <span className="text-[#e63c3c]">Services</span>
-            </h2>
-            <div className="w-24 h-1.5 bg-[#e63c3c] mt-4 shadow-[0_0_20px_#e63c3c] animate-pulse transition-all duration-500 group-hover:w-96" />
-          </div>
-        </Reveal>
+      <div className="max-w-[1400px] mx-auto px-6 relative z-10">
 
-        {/* Feature Section */}
-        <div className="flex flex-col lg:flex-row items-center gap-22 mb-32">
-
+        {/* Header Section */}
+        <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
           <Reveal>
-            <div className="w-full lg:w-full h-[450px] rounded-[40px] overflow-hidden border border-white/10 shadow-[0_20px_50px_rgba(230,60,60,0.1)]">
-              <img 
-                src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=1000&auto=format&fit=crop" 
-                alt="Digital Workspace"
-                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000 scale-105 hover:scale-100"
-              />
+            <div className="space-y-4">
+              <span className="text-[#e63c3c] font-bold tracking-[0.3em] uppercase text-xs">Premium Solutions</span>
+              <h2 className="text-white text-6xl md:text-8xl font-black uppercase leading-none tracking-tighter">
+                Dream <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#e63c3c] to-[#ff8080]">Designs.</span>
+              </h2>
             </div>
           </Reveal>
-
-          <Reveal delay={150}>
-            <div className="w-full lg:w-full text-left space-y-6">
-              <h1 className="text-4xl md:text-5xl font-black text-white uppercase italic leading-none tracking-tighter">
-                Defining the <span className="text-[#e63c3c]">Digital Frontier</span> with Precision.
-              </h1>
-              <p className="text-gray-400 text-sm md:text-base leading-relaxed max-w-xl font-medium">
-                We don't just build websites; we engineer digital experiences that dominate the market.
+          
+          <Reveal delay={200}>
+            <div className="max-w-md text-right">
+              <p className="text-gray-400 text-lg leading-relaxed">
+                We craft <span className="text-white font-semibold">AI-powered, fully functional</span> websites at prices that make sense. High-end aesthetics meets intelligence.
               </p>
-              <div className="flex items-center gap-4 pt-4">
-                <div className="w-12 h-[1px] bg-[#e63c3c]"></div>
-                <span className="text-[#e63c3c] text-[10px] font-black uppercase tracking-[4px]">
-                  Elite Agency Standard
-                </span>
-              </div>
             </div>
           </Reveal>
-
         </div>
 
-        {/* Projects Heading */}
+        {/* Feature Banner */}
         <Reveal>
-          <div className="mb-16 text-left group">
-            <h2 className="text-white text-5xl md:text-6xl font-black uppercase italic tracking-tighter transition-all duration-700 hover:tracking-normal cursor-default">
-              Our <span className="text-[#e63c3c]">Projects</span>
-            </h2>
-            <div className="w-24 h-1.5 bg-[#e63c3c] mt-4 shadow-[0_0_20px_#e63c3c] animate-pulse transition-all duration-500 group-hover:w-96" />
-          </div>
-        </Reveal>
-
-        {/* Grid */}
-        <div className="grid grid-cols-1 xl:grid-cols-[2fr_1fr] gap-8 items-stretch">
-
-          {/* Left */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            
-            <Reveal>
-              <ServiceCard id="01" popular title="Visual Branding" desc="Tailored visual identities that speak your brand's language." tags={["Logo","Strategy"]} />
-            </Reveal>
-
-            <Reveal delay={100}>
-              <ServiceCard id="02" title="UI/UX Crafting" desc="Intuitive design systems for seamless user journeys." tags={["Wireframing","UI"]} />
-            </Reveal>
-
-            <Reveal delay={200}>
-              <ServiceCard id="03" title="Web Dev" desc="High performance React applications with modern architecture." tags={["React","Vite"]} />
-            </Reveal>
-
-            <Reveal delay={300}>
-              <ServiceCard id="04" title="Mobile Apps" desc="Cross-platform solutions for iOS and Android systems." tags={["Native","Hybrid"]} />
-            </Reveal>
-
-          </div>
-
-          {/* Right */}
-          <div className="flex flex-col gap-8">
-            
-            <Reveal>
-              <ServiceCard id="05" title="SEO Analytics" desc="Data driven growth strategies for digital dominance." tags={["Data","SEO"]} />
-            </Reveal>
-
-            <Reveal delay={150}>
-              <div className="group relative flex-grow p-10 rounded-[30px] bg-gradient-to-br from-[#e63c3c] to-[#500000] flex flex-col items-center justify-center text-center overflow-hidden min-h-[300px]">
-                <div className="absolute inset-0 bg-white/10 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 skew-x-12" />
-                
-                <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mb-6 border border-white/10 group-hover:scale-110 transition-transform">
-                  <div className="w-0 h-0 border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent border-b-[20px] border-b-white transform -rotate-45" />
-                </div>
-
-                <h3 className="text-3xl font-black text-white italic uppercase leading-none">
-                  Transform <br/> Vision
+          <div className="relative w-full h-[500px] rounded-[50px] overflow-hidden mb-12 group border border-white/5">
+            <img 
+              src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1500" 
+              alt="AI Technology"
+              className="w-full h-full object-cover group-hover:scale-105 transition-all duration-[2s]"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-black via-black/40 to-transparent flex items-center p-12">
+              <div className="max-w-xl space-y-6">
+                <div className="inline-block px-4 py-1 border border-[#e63c3c] text-[#e63c3c] text-[10px] font-bold rounded-full uppercase">Next Gen Agency</div>
+                <h3 className="text-white text-4xl md:text-5xl font-black leading-tight italic">
+                  WE BUILD WEBSITES THAT <span className="text-[#e63c3c]">THINK</span> AND EVOLVE.
                 </h3>
-
-                <button className="mt-8 w-full py-4 bg-white text-black font-black rounded-2xl text-[11px] uppercase tracking-widest hover:bg-black hover:text-white transition-all shadow-xl active:scale-95">
-                  Launch Project →
+                <p className="text-gray-300">Har design me AI ki taqat aur aapke sapno ki jhalak hogi. Fully responsive and ready to launch.</p>
+                <button className="px-8 py-4 bg-[#e63c3c] text-white font-bold rounded-full hover:shadow-[0_0_30px_rgba(230,60,60,0.5)] transition-all active:scale-95 uppercase text-xs tracking-widest">
+                  Start Your Journey →
                 </button>
               </div>
-            </Reveal>
-
+            </div>
           </div>
+        </Reveal>
+
+        {/* Grid System */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          
+          <Reveal delay={100}>
+            <ServiceCard 
+              id="01" 
+              popular 
+              title="AI Web Systems" 
+              desc="Full-scale websites integrated with smart AI behaviors and custom automation." 
+              tags={["Auto-Scaling", "AI Integration", "React"]}
+              image="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=500"
+            />
+          </Reveal>
+
+          <Reveal delay={200}>
+            <ServiceCard 
+              id="02" 
+              title="Dream UI/UX" 
+              desc="Bespoke user interfaces designed to convert visitors into loyal customers." 
+              tags={["Modern UI", "Figma", "User Flow"]}
+              image="https://images.unsplash.com/photo-1586717791821-3f44a563eb4c?q=80&w=500"
+            />
+          </Reveal>
+
+          <Reveal delay={300}>
+            <div className="group relative flex flex-col items-center justify-center text-center p-10 rounded-[40px] bg-gradient-to-b from-[#e63c3c] to-[#991b1b] overflow-hidden min-h-[450px]">
+              {/* Animated Rings */}
+              <div className="absolute w-64 h-64 border border-white/20 rounded-full animate-[ping_3s_linear_infinite]" />
+              <div className="absolute w-48 h-48 border border-white/40 rounded-full animate-[ping_2s_linear_infinite]" />
+              
+              <h3 className="text-4xl font-black text-white italic uppercase mb-6 leading-none relative z-10">
+                Ready to <br /> Go Live?
+              </h3>
+              <p className="text-white/80 text-sm mb-8 relative z-10">
+                Aapke budget me, aapke liye behtareen digital ghar.
+              </p>
+              <button className="px-10 py-5 bg-white text-black font-black rounded-2xl hover:bg-black hover:text-white transition-all transform hover:-translate-y-2 shadow-2xl relative z-10 uppercase text-[10px] tracking-widest">
+                Check Pricing Plan
+              </button>
+            </div>
+          </Reveal>
+
+          <Reveal delay={400}>
+            <ServiceCard 
+              id="03" 
+              title="Brand Identity" 
+              desc="Digital-first branding that makes your company stand out in a crowded market." 
+              tags={["Logo", "Guidelines", "Socials"]}
+              image="https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=500"
+            />
+          </Reveal>
+
+          <Reveal delay={500}>
+            <ServiceCard 
+              id="04" 
+              title="SEO Dominance" 
+              desc="Not just a website, but a ranking machine built with the latest SEO standards." 
+              tags={["Speed", "Keywords", "Rank"]}
+              image="https://images.unsplash.com/photo-1571721795195-a2ca2d3370a9?q=80&w=500"
+            />
+          </Reveal>
+
+          <Reveal delay={600}>
+            <ServiceCard 
+              id="05" 
+              title="24/7 Support" 
+              desc="Dedicated maintenance and support to keep your digital asset running forever." 
+              tags={["Maintenance", "Cloud", "Security"]}
+              image="https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=500"
+            />
+          </Reveal>
 
         </div>
-
       </div>
     </section>
   );
