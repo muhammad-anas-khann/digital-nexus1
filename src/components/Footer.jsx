@@ -3,7 +3,7 @@ import { FaInstagram, FaLinkedinIn, FaFacebookF } from "react-icons/fa6";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  
+
   const quickLinks = [
     { name: "Home", href: "#home" },
     { name: "Services", href: "#services" },
@@ -18,92 +18,98 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="relative w-full bg-black border-t border-white/5">
-      {/* Background Glows */}
-      <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-[#e63c3c]/5 rounded-full blur-[150px] -z-10 pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-[#8b0000]/5 rounded-full blur-[130px] -z-10 pointer-events-none" />
+    <footer className="relative w-full bg-black border-t border-white/10 overflow-hidden">
 
-      {/* Main Footer Content */}
-      <div className="max-w-[1400px] mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 items-start">
-        
-        {/* Brand Section */}
-        <div className="flex flex-col space-y-6">
-          <div className="inline-flex w-fit">
-            <a href="/" className="relative text-white text-2xl font-black tracking-tighter italic">
-              DIGITAL
-              <span className="text-[#e63c3c] ml-1 inline-block">
-                NEXUS
-              </span>
-            </a>
-          </div>
+      {/* Glow Background */}
+      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-[#e63c3c]/10 blur-[160px] -z-10" />
+      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-[#8b0000]/10 blur-[140px] -z-10" />
+
+      <div className="max-w-[1400px] mx-auto px-6 py-20 grid grid-cols-1 md:grid-cols-3 gap-12">
+
+        {/* BRAND */}
+        <div className="space-y-6">
+          <h1 className="text-white text-3xl font-black italic tracking-tighter">
+            DIGITAL <span className="text-[#e63c3c]">NEXUS</span>
+          </h1>
+
           <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
-            Transforming bold ideas into world-class digital masterpieces through precision engineering and unparalleled design.
+            Transforming bold ideas into world-class digital experiences with precision, performance, and design excellence.
           </p>
+
+          {/* SOCIAL */}
+          <div className="flex gap-4 pt-2">
+            {socialLinks.map((s, i) => (
+              <a
+                key={i}
+                href={s.href}
+                className="relative text-gray-400 text-lg transition-all duration-300 hover:text-[#e63c3c] hover:-translate-y-1"
+              >
+                <span className="absolute inset-0 scale-0 group-hover:scale-150 bg-[#e63c3c]/10 rounded-full blur-md transition" />
+                {s.icon}
+              </a>
+            ))}
+          </div>
         </div>
 
-        {/* Quick Links */}
-        <div className="flex flex-col space-y-4">
-          <h3 className="text-white font-bold text-[13px] uppercase tracking-[2px]">Quick Links</h3>
-          <ul className="space-y-3">
-            {quickLinks.map((link, idx) => (
-              <li key={idx}>
+        {/* LINKS */}
+        <div>
+          <h3 className="text-white font-bold uppercase text-xs tracking-[3px] mb-6">
+            Navigation
+          </h3>
+
+          <ul className="space-y-4">
+            {quickLinks.map((l, i) => (
+              <li key={i}>
                 <a
-                  href={link.href}
-                  className="text-gray-400 text-sm transition-all duration-300 hover:text-white hover:translate-x-1 inline-block"
+                  href={l.href}
+                  className="relative text-gray-400 text-sm group transition"
                 >
-                  {link.name}
+                  <span className="group-hover:text-white transition">
+                    {l.name}
+                  </span>
+
+                  {/* underline animation */}
+                  <span className="absolute left-0 -bottom-1 w-0 h-[1px] bg-[#e63c3c] group-hover:w-full transition-all duration-500" />
                 </a>
               </li>
             ))}
           </ul>
         </div>
 
-        {/* Social Links */}
-        <div className="flex flex-col space-y-4">
-          <h3 className="text-white font-bold text-[13px] uppercase tracking-[2px]">Follow Us</h3>
-          <div className="flex items-center gap-4">
-            {socialLinks.map((link, idx) => (
-              <a
-                key={idx}
-                href={link.href}
-                className="text-gray-400 text-lg transition-all duration-300 hover:text-[#e63c3c] hover:-translate-y-1"
-              >
-                {link.icon}
-              </a>
-            ))}
-          </div>
+        {/* CTA / INFO */}
+        <div className="space-y-5">
+          <h3 className="text-white font-bold uppercase text-xs tracking-[3px]">
+            Let’s Build Something
+          </h3>
+
+          <p className="text-gray-500 text-sm leading-relaxed">
+            Have a project in mind? Let’s turn your vision into a digital reality.
+          </p>
+
+          <button className="relative overflow-hidden px-6 py-3 bg-[#e63c3c] text-white text-xs font-bold uppercase rounded-xl transition-all duration-500 hover:shadow-[0_0_25px_rgba(230,60,60,0.4)] active:scale-95">
+            <span className="relative z-10">Start Project</span>
+            <div className="absolute inset-0 bg-white/10 -translate-x-full hover:translate-x-full transition-transform duration-700" />
+          </button>
         </div>
+
       </div>
 
-      {/* Bottom Bar */}
-      <div className="border-t border-white/5">
-        <div className="max-w-[1400px] mx-auto px-6 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-gray-500 text-xs text-center md:text-left">
+      {/* BOTTOM BAR */}
+      <div className="border-t border-white/10">
+        <div className="max-w-[1400px] mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center gap-3">
+
+          <p className="text-gray-500 text-xs">
             © {currentYear} DIGITAL NEXUS. All rights reserved.
           </p>
-          <div className="flex items-center gap-6">
-            <a href="#" className="text-gray-500 text-xs hover:text-white transition-colors duration-300">
-              Privacy Policy
-            </a>
-            <a href="#" className="text-gray-500 text-xs hover:text-white transition-colors duration-300">
-              Terms of Service
-            </a>
+
+          <div className="flex gap-6">
+            <a className="text-gray-500 text-xs hover:text-white transition">Privacy</a>
+            <a className="text-gray-500 text-xs hover:text-white transition">Terms</a>
           </div>
+
         </div>
       </div>
 
-      <style dangerouslySetInnerHTML={{ __html: `
-        @keyframes slideInUp {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-      `}} />
     </footer>
   );
 };

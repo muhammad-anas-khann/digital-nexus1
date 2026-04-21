@@ -23,10 +23,10 @@ function App() {
         
         {/* BACKGROUND LAYER */}
         <div 
-          className="fixed inset-0 z-0 opacity-40 pointer-events-none" 
+          className="fixed inset-0 z-0 opacity-10 pointer-events-none" 
           style={{ 
             backgroundImage: `url(${globe})`, 
-            backgroundSize: '100%',        // Size yahan se barhaein (e.g., 150%)
+            backgroundSize: '140%',        // Size yahan se barhaein (e.g., 150%)
             backgroundPosition: 'center', // Alignment left-top
             backgroundRepeat: 'no-repeat',
           }}
