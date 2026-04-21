@@ -1,13 +1,18 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+// Components
 import Navbar from "./components/Navbar.jsx";
 import Hero from "./components/Hero.jsx";
 import Service from "./components/Service.jsx";
 import Team from "./components/Team.jsx";
 import Footer from "./components/Footer.jsx";
-import globe from "./assets/globe2.png";
 import Projects from "./components/Projects.jsx";
 import Contact from "./components/Contact.jsx";
+
+// Assets
+import globe from "./assets/globe2.png";
+
 const Home = () => (
   <>
     <Hero />
@@ -29,15 +34,16 @@ function App() {
           className="fixed inset-0 z-0 opacity-10 pointer-events-none" 
           style={{ 
             backgroundImage: `url(${globe})`, 
-            backgroundSize: '140%',        // Size yahan se barhaein (e.g., 150%)
-            backgroundPosition: 'center', // Alignment left-top
+            backgroundSize: '140%',
+            backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
           }}
         />
 
         {/* CONTENT LAYER */}
         <div className="relative z-10 w-full">
-<Navbar />          <main className="w-full">
+          <Navbar />
+          <main className="w-full">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={ <div className="pt-40 text-white text-center">About Page</div> } />
