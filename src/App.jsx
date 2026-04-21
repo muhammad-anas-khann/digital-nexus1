@@ -37,7 +37,7 @@ function App() {
 
         {/* CONTENT LAYER */}
         <div className="relative z-10 w-full">
-<Navbar />\n          <main className="w-full">
+<Navbar />          <main className="w-full">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={ <div className="pt-40 text-white text-center">About Page</div> } />
