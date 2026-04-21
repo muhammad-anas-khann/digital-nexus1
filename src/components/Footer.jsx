@@ -89,8 +89,11 @@ const Footer = () => {
                    <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center group-hover:bg-[#e63c3c] transition-colors">
                       <FaEnvelope className="text-white" />
                    </div>
-                   <span className="text-white text-lg font-bold group-hover:tracking-widest transition-all">HELLO@DN.COM</span>
-                </a>
+<a href="mailto:digitalnexus.2326@gmail.com">
+  <span className="text-white text-lg font-bold group-hover:tracking-widest transition-all">
+    digitalnexus.2326@gmail.com
+  </span>
+</a>                </a>
                 <div className="p-8 rounded-[30px] bg-white/[0.02] border border-white/5 group hover:border-[#e63c3c]/30 transition-all">
                   <p className="text-zinc-500 text-xs font-black uppercase tracking-[3px] mb-2">Current Status</p>
                   <div className="flex items-center gap-3">
@@ -105,7 +108,7 @@ const Footer = () => {
         {/* --- FINAL BOTTOM BAR --- */}
         <div className="pt-10 pb-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
           <p className="text-zinc-600 text-[10px] font-black uppercase tracking-[5px]">
-            © {currentYear} ALL RIGHTS RESERVED / DESIGNED BY ELITE
+            © {currentYear} ALL RIGHTS RESERVED / DESIGNED BY MUHAMMAD ANAS KHAN & MUHAMMAD AHMED
           </p>
 
           {/* Scroll To Top (Fixed Icon) */}

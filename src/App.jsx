@@ -7,14 +7,14 @@ import Team from "./components/Team.jsx";
 import Footer from "./components/Footer.jsx";
 import globe from "./assets/globe2.png";
 import Projects from "./components/Projects.jsx";
-import TestNav from "./components/TestNav.jsx";
-
+import Contact from "./components/Contact.jsx";
 const Home = () => (
   <>
     <Hero />
     <Service />
     <Projects />
     <Team />
+    <Contact />
     <Footer />
   </>
 );
